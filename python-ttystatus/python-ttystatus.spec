@@ -1,17 +1,18 @@
 %global pkgname ttystatus
 
 Name:           python-%{pkgname}
-Version:        0.23
+Version:        0.30
 Release:        1%{?dist}
 Summary:        Progress and status updates on terminals for Python
 
 License:        GPLv3+
 URL:            http://liw.fi/%{pkgname}/
-Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.xz
 
 BuildArch:      noarch
 BuildRequires:  python-coverage-test-runner
 BuildRequires:  python-sphinx
+BuildRequires:  python-pep8
 
 %description
 ttystatus is a Python library for showing progress reporting and
@@ -37,7 +38,7 @@ library providing progress and status updates on terminals.
 
 
 %prep
-%setup -q -n %{pkgname}-%{version}
+%setup -n %{name}-%{version}
 
 
 %build
@@ -66,7 +67,10 @@ make check
 
 
 %changelog
-* Thu Jul  4 2013 Michel Salim <salimma@fedoraproject.org> - 0.23-1
+* Fri Jan 8 2016 Stephen Dunne <sdunne@nexcess.net> - 0.30-1
+- Update to 0.30
+
+* Thu Jul 4 2013 Michel Salim <salimma@fedoraproject.org> - 0.23-1
 - Update to 0.23
 
 * Fri Mar 15 2013 Michel Salim <salimma@fedoraproject.org> - 0.22-1

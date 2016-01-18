@@ -1,22 +1,24 @@
 Name:           cmdtest
-Version:        0.12
+Version:        0.19
 Release:        1%{?dist}
 Summary:        Black-box testing for Unix command line tools
 
 License:        GPLv3+
 URL:            http://liw.fi/%{name}/
-Source0:        http://code.liw.fi/debian/pool/main/c/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/c/%{name}/%{name}_%{version}.orig.tar.xz
 
 BuildArch:      noarch
 BuildRequires:  python-coverage-test-runner
 BuildRequires:  python-cliapp
 # EL6's markdown does not have the needed extensions attribute
-%if ! 0%{?el6}
+%if ! 0%{?el7}
 BuildRequires:  python-markdown
 %endif
 BuildRequires:  python-ttystatus
+BuildRequires:  PyYAML
 Requires:       python-cliapp
 Requires:       python-ttystatus
+Requires:       PyYAML
 
 %description
 cmdtest black box tests Unix command line tools. Roughly, it is given
@@ -26,7 +28,7 @@ it reports a problem, and shows the differences.
 
 
 %prep
-%setup -q
+%setup -n %{name}-%{version}
 
 
 %build
@@ -49,13 +51,16 @@ rm -rf build
 %{_bindir}/cmdtest
 %{_bindir}/yarn
 %{_mandir}/man1/cmdtest.1*
-%if ! 0%{?el6}
+%if ! 0%{?el7}
 %{_mandir}/man1/yarn.1*
 %endif
 %{python_sitelib}/*
 
 
 %changelog
+* Mon Jan 11 2016 Stephen Dunne <sdunne@nexcess.net> - 0.19-1
+- Update to 0.19
+
 * Mon Apr 14 2014 Michel Salim <salimma@fedoraproject.org> - 0.12-1
 - Update to 0.12
 

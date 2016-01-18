@@ -1,12 +1,12 @@
 Name:           genbackupdata
-Version:        1.7
+Version:        1.9
 Release:        1%{?dist}
 Summary:        A program to generate test data for testing backup software
 
 # upstream asked to include license text
 License:        GPLv2+
 URL:            http://liw.fi/%{name}/
-Source0:        http://code.liw.fi/debian/pool/main/g/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/g/%{name}/%{name}_%{version}.orig.tar.xz
 
 BuildArch:      noarch
 # build-time
@@ -15,8 +15,12 @@ BuildRequires:  python-coverage-test-runner
 # build- and run-time
 BuildRequires:  python-cliapp
 BuildRequires:  python-ttystatus
+BuildRequires:  python-crypto
+BuildRequires:  python-pep8
 Requires:       python-cliapp
 Requires:       python-ttystatus
+Requires:       python-crypto
+Requires:       python-pep8
 
 %description
 genbackupdata creates or modifies directory trees in ways that
@@ -36,7 +40,7 @@ sets.
 
 
 %prep
-%setup -q
+%setup -n %{name}-%{version}
 
 
 %build
@@ -64,6 +68,9 @@ make check
 
 
 %changelog
+* Mon Jan 11 2016 Stephen Dunne <sdunne@nexcess.net> - 1.9-1
+- Update to 1.9
+
 * Mon Feb 25 2013 Michel Salim <salimma@fedoraproject.org> - 1.7-1
 - Update to 1.7
 

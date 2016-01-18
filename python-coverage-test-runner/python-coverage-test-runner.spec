@@ -2,13 +2,13 @@
 %global prjname coverage-test-runner
 
 Name:           python-%{prjname}
-Version:        1.10
-Release:        1%{?dist}.1
+Version:        1.11
+Release:        1%{?dist}
 Summary:        Python module for enforcing code coverage completeness
 
 License:        GPLv3+
 URL:            http://liw.fi/%{prjname}/
-Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.xz
 
 BuildArch:      noarch
 BuildRequires:  python-coverage
@@ -27,7 +27,7 @@ that module.
 
 
 %prep
-%setup -q -n %{pkgname}-%{version}
+%setup -n %{name}-%{version}
 
 
 %build
@@ -49,6 +49,9 @@ make check
 
 
 %changelog
+* Fri Jan 08 2016 Stephen Dunne <sdunne@nexcess.net> - 1.11-1
+- Update to 1.11
+
 * Fri Sep 27 2013 Michel Salim <salimma@fedoraproject.org> - 1.10-1.1
 - Rebuild to push as Bodhi update
 

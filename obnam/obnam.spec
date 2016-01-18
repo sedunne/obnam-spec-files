@@ -6,7 +6,7 @@
 %bcond_with crashtests
 
 Name:           obnam
-Version:        1.17
+Version:        1.18.2
 Release:        1%{?dist}
 Summary:        An easy, secure backup program
 
@@ -33,7 +33,7 @@ BuildRequires:  python-larch
 BuildRequires:  python-paramiko
 BuildRequires:  python-tracing
 BuildRequires:  python-ttystatus
-BuildRequires:  python2-yaml
+BuildRequires:  PyYAML
 
 Requires:       attr
 Requires:       gnupg
@@ -42,7 +42,9 @@ Requires:       python-larch
 Requires:       python-paramiko
 Requires:       python-tracing
 Requires:       python-ttystatus
-Requires:       python2-yaml
+Requires:       PyYAML
+# requires EPEL repo
+Requires:       fuse-python
 
 # we don't want to provide private python extension libs
 # http://fedoraproject.org/wiki/Packaging:AutoProvidesAndRequiresFiltering#Arch-specific_extensions_to_scripting_languages
@@ -113,6 +115,9 @@ chmod 755 %{buildroot}%{python_sitearch}/obnamlib/_obnam.so
 
 
 %changelog
+* Thu Jan 7 2016 Stephen Dunne <sedunne@nexcess.net> - 1.18-1
+- Update to 1.18
+
 * Tue Oct  6 2015 Michel Salim <salimma@fedoraproject.org> - 1.17-1
 - Update to 1.17
 

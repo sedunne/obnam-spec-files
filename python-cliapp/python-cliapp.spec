@@ -1,17 +1,19 @@
 %global pkgname cliapp
 
 Name:           python-%{pkgname}
-Version:        1.20140719
+Version:        1.20160109
 Release:        1%{?dist}
 Summary:        Python framework for Unix command line programs
 
 License:        GPLv2+
 URL:            http://liw.fi/%{pkgname}/
-Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.xz
 
 BuildArch:      noarch
 BuildRequires:  python-coverage-test-runner
 BuildRequires:  python-sphinx
+BuildRequires:  PyYAML
+BuildRequires:  python-pep8
 
 %description
 cliapp is a Python framework for Unix-like command line programs. It
@@ -29,7 +31,7 @@ framework for Unix command line programs.
 
 
 %prep
-%setup -q -n %{pkgname}-%{version}
+%setup -q -n %{name}-%{version}
 
 
 %build
@@ -63,6 +65,9 @@ make check
 
 
 %changelog
+* Mon Jan 11 2016 Stephen Dunne <sdunne@nexcess.net> - 1.20160109
+- Update to 1.20160109
+
 * Tue Dec  2 2014 Michel Alexandre Salim <salimma@fedoraproject.org> - 1.20140719-1
 - Update to 1.20140719
 

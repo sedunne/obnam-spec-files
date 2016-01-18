@@ -1,13 +1,13 @@
 %global pkgname larch
 
 Name:           python-%{pkgname}
-Version:        1.20131130
+Version:        1.20151025
 Release:        1%{?dist}
 Summary:        Python B-tree library
 
 License:        GPLv3+
 URL:            http://liw.fi/%{pkgname}/
-Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.xz
 
 BuildArch:      noarch
 # build-time only
@@ -60,7 +60,7 @@ framework for Unix command line programs.
 
 
 %prep
-%setup -q -n %{pkgname}-%{version}
+%setup -n %{name}-%{version}
 
 
 %build
@@ -94,6 +94,9 @@ make check
 
 
 %changelog
+* Mon Jan 11 2016 Stephen Dunne <sdunne@nexcess.net> - 1.20151025-1
+- Update to 1.20151025
+
 * Thu Nov 27 2014 Michel Alexandre Salim <salimma@fedoraproject.org> - 1.20131130-1
 - Update to 1.20131130
 

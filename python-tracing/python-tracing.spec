@@ -1,13 +1,13 @@
 %global pkgname tracing
 
 Name:           python-%{pkgname}
-Version:        0.8
+Version:        0.9
 Release:        1%{?dist}
 Summary:        Python debug logging helper
 
 License:        GPLv3+
 URL:            http://liw.fi/%{pkgname}/
-Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/p/%{name}/%{name}_%{version}.orig.tar.xz
 
 BuildArch:      noarch
 BuildRequires:  python-sphinx
@@ -36,8 +36,7 @@ logging helper.
 
 
 %prep
-%setup -q
-
+%setup -n %{name}-%{version}
 
 %build
 %{__python} setup.py build
@@ -58,6 +57,9 @@ make -C doc html
 
 
 %changelog
+* Mon Jan 11 2016 Stephen Dunne <sdunne@nexcess.net> - 0.9-1
+- Update to 0.9
+
 * Fri Sep 27 2013 Michel Salim <salimma@fedoraproject.org> - 0.8-1
 - Update to 0.8
 

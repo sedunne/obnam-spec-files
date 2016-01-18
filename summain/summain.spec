@@ -1,11 +1,11 @@
 Name:           summain
-Version:        0.18
+Version:        0.20
 Release:        1%{?dist}
 Summary:        File manifest generator
 
 License:        GPLv3+
 URL:            http://liw.fi/%{name}/
-Source0:        http://code.liw.fi/debian/pool/main/s/%{name}/%{name}_%{version}.orig.tar.gz
+Source0:        http://code.liw.fi/debian/pool/main/s/%{name}/%{name}_%{version}.orig.tar.xz
 
 # build-time
 BuildRequires:  python-coverage-test-runner
@@ -13,7 +13,9 @@ BuildRequires:  libattr-devel
 BuildRequires:  python-devel
 # build- and run-time
 BuildRequires:  python-cliapp
+BuildRequires:  PyYAML
 Requires:       python-cliapp
+Requires:  PyYAML
 
 # we don't want to provide private python extension libs
 # http://fedoraproject.org/wiki/Packaging:AutoProvidesAndRequiresFiltering#Arch-specific_extensions_to_scripting_languages
@@ -30,7 +32,7 @@ compared (with diff) to see if something has changed.
 
 
 %prep
-%setup -q
+%setup -n %{name}-%{version}
 
 
 %build
@@ -46,11 +48,8 @@ chmod 755 %{buildroot}%{python_sitearch}/_summain.so
 
 
 %check
-%if 0%{?fedora}
-# check not part of EL6's python
 # TODO: replace this with proper test suite once available
 %{__python} setup.py check
-%endif
 
 
 %files
@@ -61,6 +60,9 @@ chmod 755 %{buildroot}%{python_sitearch}/_summain.so
 
 
 %changelog
+* Mon Jan 11 2016 Stephen Dunne <sdunne@nexcess.net> - 0.20-1
+- Update to 0.20
+
 * Sun Mar 17 2013 Michel Salim <salimma@fedoraproject.org> - 0.18-1
 - Update to 0.18
 
